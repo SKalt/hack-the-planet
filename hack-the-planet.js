@@ -1,4 +1,5 @@
 var uglyRedBook = {};
+var alreadyChecked = new Set()
 function lookInto(pathArr){
   let result = window;
   try {
@@ -6,7 +7,10 @@ function lookInto(pathArr){
       result = result[path];
     }
     uglyRedBook[pathArr.join('.')] = result;
-    Object.keys(result).forEach( subitem => lookInto(pathArr.concat(subitem)) );
+    Object.keys(result).forEach( subitem => {
+      if (!alreadyChecked.has(result[subitem])){
+       lookInto(pathArr.concat(subitem))
+     });
   } catch (err) {
     console.log(err)
   }
