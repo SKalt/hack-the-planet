@@ -13,7 +13,7 @@ function lookInto(pathArr, recursionLevel, recursionLimit){
     uglyRedBook[pathArr.join('.')] = result;
     Object.keys(result).forEach( subitem => {
       if (!alreadyChecked.has(result[subitem])){
-       lookInto(pathArr.concat(subitem), recursionLevel + 1, recursionLimit)
+       lookInto(pathArr.concat(subitem), recursionLevel + 1, recursionLimitre)
      }
    });
   } catch (err) {
