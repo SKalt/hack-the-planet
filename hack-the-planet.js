@@ -1,4 +1,4 @@
-uglyRedBook = []; // structure as markdown
+var uglyRedBook = []; // structure as markdown
 function lookInto(pathArr){
   try {
     let result = window;
