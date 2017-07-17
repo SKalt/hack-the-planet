@@ -1,17 +1,12 @@
-var uglyRedBook = []; // structure as markdown
+var uglyRedBook = {};
 function lookInto(pathArr){
+  let result = window;
   try {
-    let result = window;
     for (let path of pathArr){
       result = result[path];
     }
-    uglyRedBook.push(pathArr.join('.'));
-    Object.keys(result).forEach(
-      (subitem)=>{
-        if (subdir != '__proto__'){
-          lookInto(pathArr.concat(subitem));
-        }
-      });
+    uglyRedBook[pathArr.join('.')] = result;
+    Object.keys(result).forEach( subitem => lookInto(pathArr.concat(subitem)) );
   } catch (err) {}
 }
 // ignore normal window keys:
@@ -21,4 +16,5 @@ Object.keys(window).forEach(key => {
     lookInto(key);
   }
 });
-console.log(uglyRedBook.join('\n'));
+//console.log(uglyRedBook.join('\n'));
+console.log( Object.keys(uglyRedBook).filter(i => /earth/.exec(i)) )
