@@ -16,7 +16,7 @@ var normalWindowKeys = `stop,open,alert,confirm,prompt,print,requestAnimationFra
 var toIgnore = new Set(['d3'].concat(normalWindowKeys.split(',')));
 Object.keys(window).forEach(key => {
   if (!toIgnore.has(key)){
-    lookInto(key);
+    lookInto([key]);
   }
 });
 //console.log(uglyRedBook.join('\n'));
