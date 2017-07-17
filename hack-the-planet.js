@@ -2,7 +2,7 @@ var uglyRedBook = {};
 var alreadyChecked = new Set();
 
 function lookInto(pathArr, recursionLevel, recursionLimit){
-  if (recursionLevel > recusionLimit){
+  if (recursionLevel > recursionLimit){
     return 0;
   }
   let result = window;
@@ -13,7 +13,7 @@ function lookInto(pathArr, recursionLevel, recursionLimit){
     uglyRedBook[pathArr.join('.')] = result;
     Object.keys(result).forEach( subitem => {
       if (!alreadyChecked.has(result[subitem])){
-       lookInto(pathArr.concat(subitem), recursionLevel + 1, recusionLimit)
+       lookInto(pathArr.concat(subitem), recursionLevel + 1, recursionLimit)
      }
    });
   } catch (err) {
