@@ -2,7 +2,7 @@ var uglyRedBook = {};
 var alreadyChecked = new Set();
 
 function lookInto(pathArr, recursionLevel, recursionLimit){
-  if (recursionLevel > recusionLimit){
+  if (recursionLevel > recursionLimit){
     return 0;
   }
   let result = window;
