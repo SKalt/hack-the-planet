@@ -1,6 +1,10 @@
 var uglyRedBook = {};
-var alreadyChecked = new Set()
-function lookInto(pathArr){
+var alreadyChecked = new Set();
+
+function lookInto(pathArr, recursionLevel, recursionLimit){
+  if (recursionLevel > recusionLimit){
+    return 0;
+  }
   let result = window;
   try {
     for (let path of pathArr){
@@ -9,7 +13,7 @@ function lookInto(pathArr){
     uglyRedBook[pathArr.join('.')] = result;
     Object.keys(result).forEach( subitem => {
       if (!alreadyChecked.has(result[subitem])){
-       lookInto(pathArr.concat(subitem))
+       lookInto(pathArr.concat(subitem), recursionLevel + 1, recusionLimit)
      });
   } catch (err) {
     console.log(err)
@@ -20,7 +24,7 @@ var normalWindowKeys = `stop,open,alert,confirm,prompt,print,requestAnimationFra
 var toIgnore = new Set(['d3'].concat(normalWindowKeys.split(',')));
 Object.keys(window).forEach(key => {
   if (!toIgnore.has(key)){
-    lookInto([key]);
+    lookInto([key], 0, 5);
   }
 });
 //console.log(uglyRedBook.join('\n'));
