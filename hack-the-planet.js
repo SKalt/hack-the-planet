@@ -5,11 +5,18 @@ function lookInto(pathArr){
     for (let path of pathArr){
       result = result[path];
     }
-    uglyRedBook.push(pathArr.join('.'))
-    Object.keys(result).forEach((subitem)=>{
-    if (subdir != '__proto__'){
-      lookInto(pathArr.concat(subitem))
-    }
-  } catch (err){}
+    uglyRedBook.push(pathArr.join('.'));
+    Object.keys(result).forEach(
+      (subitem)=>{
+        if (subdir != '__proto__'){
+          lookInto(pathArr.concat(subitem));
+        }
+      });
+  } catch (err) {}
 }
-console.log(uglyRedBook.join('\n'))
+Object.keys(window).forEach(key => {
+  if (!(new Set(['d3', '__proto__']).has(key))){
+    lookInto(key);
+  }
+});
+console.log(uglyRedBook.join('\n'));
