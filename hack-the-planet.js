@@ -9,6 +9,7 @@ function lookInto(pathArr){
     Object.keys(result).forEach((subitem)=>{
     if (subdir != '__proto__'){
       lookInto(pathArr.concat(subitem))
-  } catch(err){}
+    }
+  } catch (err){}
 }
 console.log(uglyRedBook.join('\n'))
