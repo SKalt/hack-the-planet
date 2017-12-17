@@ -1,4 +1,4 @@
-function getWindowSpecificNames(){
+let getWindowSpecificNames = function() {
   let iframe = document.createElement('iframe');
   iframe.style.display = 'none';
   document.body.appendChild(iframe);
