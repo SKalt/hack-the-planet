@@ -1,5 +1,5 @@
 function getWindowSpecificNames(){
-  iframe = document.createElement('iframe');
+  let iframe = document.createElement('iframe');
   iframe.style.display = 'none';
   document.body.appendChild(iframe);
   const nonStandardWindowProperties = Object.keys(window)
